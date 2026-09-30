@@ -28,20 +28,17 @@ confini_zone = {
 
 
 st.title("Calcolatore canone concordato - Comune di Foggia")
-st.caption("Accordo Territoriale sottoscritto il 06/03/2020 e depositato il 09/03/2020, che annulla e "
-           "sostituisce quello del 28/10/2005. I valori delle tabelle non sono aggiornati con le "
-           "variazioni ISTAT successive.")
 
 st.subheader("Generalita'")
 
 tipo_contratto = st.radio("Tipologia contrattuale:", [
-    "Contratto agevolato (art. 2, comma 3) - allegato A",
-    "Contratto transitorio ordinario (art. 5, comma 1) - allegato B",
-    "Contratto transitorio per studenti universitari (art. 5, commi 2 e 3) - allegato C"])
+    "Contratto agevolato (art. 2, comma 3)",
+    "Contratto transitorio ordinario (art. 5, comma 1)",
+    "Contratto transitorio per studenti universitari (art. 5, commi 2 e 3)"])
 
 zona = st.selectbox("Zona (Allegato 1):", list(valori_zone.keys()),
                     help="Se l'immobile ricade sulla linea di confine tra due zone si prende in "
-                         "considerazione quella di maggior valore (punto 2 dell'accordo).")
+                         "considerazione quella di maggior valore")
 st.caption(confini_zone[zona])
 
 piano = st.number_input("Piano dell'appartamento (0 per il piano terra)",
@@ -53,7 +50,7 @@ mq_calpestabili = st.number_input("Superficie netta calpestabile dell'immobile i
 
 
 
-st.subheader("Superficie convenzionale (punto 6)")
+st.subheader("Superficie convenzionale")
 
 mq_garage = st.number_input("Garage, box e posti auto accatastati - mq (calcolati al 50%)",
                             min_value=0.0, step=1.0)
@@ -90,7 +87,7 @@ st.write(f"Superficie convenzionale: {mq_convenzionali:.2f} mq - superficie di c
 
 
 
-st.subheader("Elementi essenziali (punto 4)")
+st.subheader("Elementi essenziali")
 
 ess1 = False
 if piano >= 1 or rialzato_giardino == True:
@@ -114,7 +111,7 @@ n_essenziali = sum(e for e in elementi_essenziali if e == True)
 
 
 
-st.subheader("Elementi non essenziali (punto 4)")
+st.subheader("Elementi non essenziali")
 
 nes1 = st.checkbox("1. Piano intermedio o piano rialzato con giardino",
                    help="L'accordo non definisce cosa si intenda per piano intermedio: la voce e' "
@@ -170,7 +167,7 @@ if tipo_contratto.startswith("Contratto transitorio per studenti"):
 
 
 
-st.subheader("Maggiorazioni (punto 8)")
+st.subheader("Maggiorazioni")
 
 moltiplicatore = 1.0
 
