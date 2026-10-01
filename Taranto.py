@@ -16,25 +16,21 @@ valori_aree = {
 
 
 st.title("Calcolatore canone concordato - Comune di Taranto")
-st.caption("Accordo Territoriale del 19/04/2018, in attuazione della legge 431/98 e del D.M. 16/01/2017. "
-           "I valori delle tabelle non sono aggiornati con le variazioni ISTAT successive.")
+
 
 st.subheader("Generalita'")
 
-tipo_contratto = st.radio("Tipologia contrattuale (art. 10):", [
-    "a) Contratto tre + due (art. 2, comma 3)",
-    "b) Contratto ad uso transitorio (art. 5, comma 1)",
-    "c) Contratto ad uso transitorio per studenti universitari (art. 5, commi 2 e 3)"])
+tipo_contratto = st.radio("Tipologia contrattuale:", [
+    "a) Contratto tre + due ",
+    "b) Contratto ad uso transitorio ",
+    "c) Contratto ad uso transitorio per studenti universitari "])
 
 area = st.selectbox(
-    "Area omogenea (art. 1):",
+    "Area omogenea :",
     list(valori_aree.keys()),
     help="I confini si intendono sulla linea di mezzeria delle varie strade. Se un edificio e' "
          "attraversato dalla linea di confine, l'intero edificio rientra nella zona di maggiore "
-         "valore. L'area Borgo ha come confine corso Due Mari, via Roma, lungomare Vittorio "
-         "Emanuele III e viale Virgilio angolo via Leonida e via Pitagora. Le ultime tre voci "
-         "sono le tre righe di valori in cui l'Allegato 1 suddivide l'area i) dell'art. 1 "
-         "(Italia-Montegranaro; Solito-Corvisea; Tre Carrare-Battisti).")
+         "valore")
 
 mq_calpestabili = st.number_input(
     "Superficie calpestabile dell'alloggio in mq (escluse le mura, i palchi morti e tutte le aree "
@@ -42,7 +38,7 @@ mq_calpestabili = st.number_input(
     min_value=0.0, step=1.0)
 
 
-st.subheader("Superficie convenzionale (art. 12)")
+st.subheader("Superficie convenzionale ")
 
 mq_autorimessa = st.number_input("Autorimesse ad uso esclusivo - mq (calcolati al 50%)",
                                  min_value=0.0, step=1.0)
@@ -76,7 +72,7 @@ st.write(f"Superficie convenzionale: {mq_convenzionali:.2f} mq - superficie di c
 
 
 
-st.subheader("Parametri (art. 11)")
+st.subheader("Parametri")
 st.caption("Gli elementi si considerano solo se installati a spese del proprietario.")
 
 par1 = st.checkbox("1. Tipologia catastale A/1, A/2, A/3, A/7, A/8 o A/9")
@@ -122,7 +118,7 @@ else:
 st.info(f"Parametri presenti: {n_parametri} - fascia {fascia}")
 
 
-st.subheader("Condizioni generali dello stabile (art. 13)")
+st.subheader("Condizioni generali dello stabile ")
 
 sta1 = st.checkbox("a) Portone di accesso funzionante con adeguato dispositivo di chiusura e apertura "
                    "da ciascuna unita' immobiliare")
@@ -162,7 +158,7 @@ buone_condizioni = st.checkbox(
 
 
 alloggio_sociale = st.checkbox("Alloggio sociale: il canone non puo' superare i valori della fascia A "
-                               "(art. 5)")
+                              )
 if alloggio_sociale == True:
     fascia = "A"
 
@@ -180,7 +176,7 @@ elif stato_stabile == "pregio" and fascia == "C":
 
 
 
-st.subheader("Condizioni particolari di variazione del canone (art. 15)")
+st.subheader("Condizioni particolari di variazione del canone ")
 
 perc_totale = 0.0
 
@@ -202,7 +198,7 @@ elif arredo.startswith("Parzialmente"):
 
 
 if tipo_contratto.startswith("a) Contratto tre"):
-    st.subheader("Durata contrattuale (art. 2)")
+    st.subheader("Durata contrattuale")
     durata = st.radio("Durata del contratto:", [
         "Tre anni con rinnovo di ulteriori due anni",
         "Quattro anni con rinnovo di ulteriori due anni (aumento fino al 4%)",
@@ -224,7 +220,7 @@ if tipo_contratto.startswith("c) Contratto"):
     st.caption("Contratto per studenti universitari: al canone si applica una riduzione del 5%.")
 
 
-st.subheader("Locazione di porzione dell'immobile (art. 12)")
+st.subheader("Locazione di porzione dell'immobile")
 
 mq_porzione = 0.0
 mq_condivisi = 0.0
