@@ -2409,16 +2409,15 @@ for nome in stradario_torino.keys():
 
 
 st.title("Calcolatore canone concordato - Comune di Torino")
-st.caption("Accordo Territoriale del 06/12/2022 aggiornato al 15/04/2024, in vigore dal 01/05/2024. "
-           "I valori delle tabelle non sono aggiornati con le variazioni ISTAT successive.")
+
 
 st.subheader("Generalita'")
 
 tipo_contratto = st.radio(
     "Tipo di contratto:",
-    ["Contratto agevolato (art. 2, comma 3)",
-     "Contratto transitorio (art. 5, comma 1)",
-     "Contratto per studenti universitari (art. 5, comma 3)"])
+    ["Contratto agevolato",
+     "Contratto transitorio ",
+     "Contratto per studenti universitari "])
 
 via = st.text_input("Inserisci la via senza numero civico"
                     "(esempio: Garibaldi Giuseppe, Francia (corso), Vittorio Emanuele II (c.so))")
